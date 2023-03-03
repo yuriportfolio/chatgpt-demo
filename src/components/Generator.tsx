@@ -108,72 +108,69 @@ export default () => {
   };
 
   return (
-    <div my-  return (
-    <div my-6>
-      <For each={messageList()}>{(message) => <MessageItem role={message.role} message={message.content} />}</For>
-      {currentAssistantMessage() && <MessageItem role="assistant" message={currentAssistantMessage} />}
-      <div class="my-4 flex items-center gap-2">
-        <div class="mr-2 text-slate">Please enter a job description and your work experience:</div>
-        <input
-          ref={inputRef!}
-          type="text"
-          id="input"
-          placeholder='{"jobDescription": {"title": "Software Developer", "description": "Develops and maintains software applications"}, "userExperience": [{"position": "Software Developer", "company": "ABC Corp", "startDate": "Jan 2018", "endDate": "Present", "description": "Developed web applications using React and Node.js"}, {"position": "Junior Software Developer", "company": "XYZ Corp", "startDate": "Sep 2016", "endDate": "Jan 2018", "description": "Worked on a team developing a mobile app using React Native"}]}'
-          autocomplete="off"
-          autoFocus
-          disabled={loading()}
-          onKeyDown={(e) => {
-            e.key === "Enter" && !e.isComposing && handleButtonClick();
-          }}
-          w-full
-          px-4
-          h-12
-          text-slate
-          rounded-sm
-          bg-slate
-          bg-op-15
-          focus:bg-op-20
-          focus:ring-0
-          focus:outline-none
-          placeholder:text-slate-400
-          placeholder:op-30
-        />
-        <button
-          onClick={handleButtonClick}
-          disabled={loading()}
-          h-12
-          px-4
-          py-2
-          bg-slate
-          bg-op-15
-          hover:bg-op-20
-          text-slate
-          rounded-sm
-        >
-          Generate Resume
-        </button>
-        <button
-          title="Clear"
-          onClick={clear}
-          disabled={loading()}
-          h-12
-          px-4
-          py-2
-          bg-slate
-          bg-op-15
-          hover:bg-op-20
-          text-slate
-          rounded-sm
-        >
-          <IconClear />
-        </button>
-      </div>
-      <Show when={!loading()}>
-        <div class="h-12 my-4 flex items-center justify-center bg-slate bg-op-15 text-slate rounded-sm">
-          {loading() ? "Generating resume..." : ""}
-        </div>
-      </Show>
+  <div my-6>
+    <For each={messageList()}>{(message) => <MessageItem role={message.role} message={message.content} />}</For>
+    {currentAssistantMessage() && <MessageItem role="assistant" message={currentAssistantMessage} />}
+    <div class="my-4 flex items-center gap-2">
+      <div class="mr-2 text-slate">Please enter a job description and your work experience:</div>
+      <input
+        ref={inputRef!}
+        type="text"
+        id="input"
+        placeholder='{"jobDescription": {"title": "Software Developer", "description": "Develops and maintains software applications"}, "userExperience": [{"position": "Software Developer", "company": "ABC Corp", "startDate": "Jan 2018", "endDate": "Present", "description": "Developed web applications using React and Node.js"}, {"position": "Junior Software Developer", "company": "XYZ Corp", "startDate": "Sep 2016", "endDate": "Jan 2018", "description": "Worked on a team developing a mobile app using React Native"}]}'
+        autocomplete="off"
+        autoFocus
+        disabled={loading()}
+        onKeyDown={(e) => {
+          e.key === "Enter" && !e.isComposing && handleButtonClick();
+        }}
+        w-full
+        px-4
+        h-12
+        text-slate
+        rounded-sm
+        bg-slate
+        bg-op-15
+        focus:bg-op-20
+        focus:ring-0
+        focus:outline-none
+        placeholder:text-slate-400
+        placeholder:op-30
+      />
+      <button
+        onClick={handleButtonClick}
+        disabled={loading()}
+        h-12
+        px-4
+        py-2
+        bg-slate
+        bg-op-15
+        hover:bg-op-20
+        text-slate
+        rounded-sm
+      >
+        Generate Resume
+      </button>
+      <button
+        title="Clear"
+        onClick={clear}
+        disabled={loading()}
+        h-12
+        px-4
+        py-2
+        bg-slate
+        bg-op-15
+        hover:bg-op-20
+        text-slate
+        rounded-sm
+      >
+        <IconClear />
+      </button>
     </div>
-  );
-};
-
+    <Show when={!loading()}>
+      <div class="h-12 my-4 flex items-center justify-center bg-slate bg-op-15 text-slate rounded-sm">
+        {loading() ? "Generating resume..." : ""}
+      </div>
+    </Show>
+  </div>
+);
